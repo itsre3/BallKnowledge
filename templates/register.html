@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <form action="/register" method="post">
+        <div class="form-group">
+            <label for="email" aria-describedby="emailHelp">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-danger">{{ emailHelp }}</small>
+        </div>
+        <div class="form-group">
+            <label for="username" aria-describedby="usernameHelp">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username">
+            <small id="usernameHelp" class="form-text text-danger">{{ usernameHelp }}</small>
+        </div>
+        <div class="form-group">
+            <label for="password" aria-describedby="passwordHelp">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            <small id="passwordHelp" class="form-text text-danger">{{ passwordHelp }}</small>
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword" aria-describedby="comfirmHelp">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmPassword" name="confirmation" placeholder="Confirm Password">
+            <small id="confirmHelp" class="form-text text-danger">{{ confirmHelp }}</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+{% endblock %}

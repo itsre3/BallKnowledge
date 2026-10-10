@@ -1,0 +1,810 @@
+[
+  {
+    "id": 1,
+    "name": "Lionel Messi",
+    "aliases": [
+      "messi",
+      "leo messi"
+    ],
+    "hints": {
+      "nationality": "Argentina",
+      "position": "Forward / Attacking Midfielder",
+      "club": "Inter Miami (MLS)",
+      "age": 39,
+      "career": "Barcelona -> PSG -> Inter Miami",
+      "trophies": "8x Ballon d'Or, 2022 FIFA World Cup, 4x UEFA Champions League, 2x Copa América"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Cristiano Ronaldo",
+    "aliases": [
+      "ronaldo",
+      "cr7",
+      "cristiano"
+    ],
+    "hints": {
+      "nationality": "Portugal",
+      "position": "Forward / Striker",
+      "club": "Al-Nassr (Saudi Pro League)",
+      "age": 41,
+      "career": "Sporting CP -> Manchester United -> Real Madrid -> Juventus -> Manchester United -> Al-Nassr",
+      "trophies": "5x Ballon d'Or, 5x UEFA Champions League, UEFA Euro 2016"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Kylian Mbappé",
+    "aliases": [
+      "mbappe",
+      "kylian mbappe"
+    ],
+    "hints": {
+      "nationality": "France",
+      "position": "Forward",
+      "club": "Real Madrid (La Liga)",
+      "age": 27,
+      "career": "Monaco -> Paris Saint-Germain -> Real Madrid",
+      "trophies": "2018 FIFA World Cup, 2022 World Cup Golden Boot, 6x Ligue 1 champion"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Erling Haaland",
+    "aliases": [
+      "haaland",
+      "erling haaland"
+    ],
+    "hints": {
+      "nationality": "Norway",
+      "position": "Striker",
+      "club": "Manchester City (Premier League)",
+      "age": 26,
+      "career": "Bryne -> Molde -> RB Salzburg -> Borussia Dortmund -> Manchester City",
+      "trophies": "Continental Treble (2022-23), 2x Premier League Golden Boot, UEFA Champions League"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Vinícius Júnior",
+    "aliases": [
+      "vinicius",
+      "vini jr",
+      "vinicius jr",
+      "vini"
+    ],
+    "hints": {
+      "nationality": "Brazil",
+      "position": "Winger",
+      "club": "Real Madrid (La Liga)",
+      "age": 26,
+      "career": "Flamengo -> Real Madrid",
+      "trophies": "2x UEFA Champions League, 3x La Liga champion, UCL Final winning goalscorer"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Kevin De Bruyne",
+    "aliases": [
+      "de bruyne",
+      "kdb",
+      "kevin de bruyne"
+    ],
+    "hints": {
+      "nationality": "Belgium",
+      "position": "Midfielder",
+      "club": "Manchester City (Premier League)",
+      "age": 35,
+      "career": "Genk -> Chelsea -> Werder Bremen -> Wolfsburg -> Manchester City",
+      "trophies": "6x Premier League champion, UEFA Champions League (2022-23 Treble), 2x PFA Player of the Year"
+    }
+  },
+  {
+    "id": 7,
+    "name": "Mohamed Salah",
+    "aliases": [
+      "salah",
+      "mo salah",
+      "mohamed salah"
+    ],
+    "hints": {
+      "nationality": "Egypt",
+      "position": "Forward / Winger",
+      "club": "Liverpool (Premier League)",
+      "age": 34,
+      "career": "El Mokawloon -> Basel -> Chelsea -> Fiorentina -> Roma -> Liverpool",
+      "trophies": "Premier League champion, UEFA Champions League, 3x Premier League Golden Boot"
+    }
+  },
+  {
+    "id": 8,
+    "name": "Jude Bellingham",
+    "aliases": [
+      "bellingham",
+      "jude bellingham"
+    ],
+    "hints": {
+      "nationality": "England",
+      "position": "Midfielder",
+      "club": "Real Madrid (La Liga)",
+      "age": 23,
+      "career": "Birmingham City -> Borussia Dortmund -> Real Madrid",
+      "trophies": "UEFA Champions League (2023-24), La Liga champion, Golden Boy award (2023)"
+    }
+  },
+  {
+    "id": 9,
+    "name": "Harry Kane",
+    "aliases": [
+      "kane",
+      "harry kane"
+    ],
+    "hints": {
+      "nationality": "England",
+      "position": "Striker",
+      "club": "Bayern Munich (Bundesliga)",
+      "age": 33,
+      "career": "Tottenham Hotspur -> Leicester City -> Millwall -> Bayern Munich",
+      "trophies": "England all-time top scorer, European Golden Shoe (2023-24), 3x Premier League Golden Boot"
+    }
+  },
+  {
+    "id": 10,
+    "name": "Robert Lewandowski",
+    "aliases": [
+      "lewandowski",
+      "robert lewandowski",
+      "lewa"
+    ],
+    "hints": {
+      "nationality": "Poland",
+      "position": "Striker",
+      "club": "Barcelona (La Liga)",
+      "age": 38,
+      "career": "Lech Poznan -> Borussia Dortmund -> Bayern Munich -> Barcelona",
+      "trophies": "UEFA Champions League (2019-20), 10x Bundesliga champion, La Liga champion, 2x FIFA Best Men's Player"
+    }
+  },
+  {
+    "id": 11,
+    "name": "Rodri",
+    "aliases": [
+      "rodri",
+      "rodrigo"
+    ],
+    "hints": {
+      "nationality": "Spain",
+      "position": "Defensive Midfielder",
+      "club": "Manchester City (Premier League)",
+      "age": 30,
+      "career": "Villarreal -> Atlético Madrid -> Manchester City",
+      "trophies": "Ballon d'Or (2024), UEFA Euro 2024 Player of the Tournament, Continental Treble (2022-23), 4x Premier League"
+    }
+  },
+  {
+    "id": 12,
+    "name": "Luka Modrić",
+    "aliases": [
+      "modric",
+      "luka modric"
+    ],
+    "hints": {
+      "nationality": "Croatia",
+      "position": "Central Midfielder",
+      "club": "Real Madrid (La Liga)",
+      "age": 41,
+      "career": "Dinamo Zagreb -> Tottenham Hotspur -> Real Madrid",
+      "trophies": "2018 Ballon d'Or, 6x UEFA Champions League, 2018 World Cup Golden Ball"
+    }
+  },
+  {
+    "id": 13,
+    "name": "Bukayo Saka",
+    "aliases": [
+      "saka",
+      "bukayo saka"
+    ],
+    "hints": {
+      "nationality": "England",
+      "position": "Winger",
+      "club": "Arsenal (Premier League)",
+      "age": 25,
+      "career": "Arsenal",
+      "trophies": "FA Cup, 2x England Player of the Year, PFA Young Player of the Year"
+    }
+  },
+  {
+    "id": 14,
+    "name": "Victor Osimhen",
+    "aliases": [
+      "osimhen",
+      "victor osimhen"
+    ],
+    "hints": {
+      "nationality": "Nigeria",
+      "position": "Striker",
+      "club": "Galatasaray (Süper Lig)",
+      "age": 27,
+      "career": "Wolfsburg -> Charleroi -> Lille -> Napoli -> Galatasaray",
+      "trophies": "Serie A champion (2022-23), Capocannoniere (Serie A Golden Boot), African Footballer of the Year (2023)"
+    }
+  },
+  {
+    "id": 15,
+    "name": "Lamine Yamal",
+    "aliases": [
+      "yamal",
+      "lamine yamal"
+    ],
+    "hints": {
+      "nationality": "Spain",
+      "position": "Winger",
+      "club": "Barcelona (La Liga)",
+      "age": 19,
+      "career": "Barcelona",
+      "trophies": "UEFA Euro 2024 champion, Euro 2024 Young Player of the Tournament, Kopa Trophy"
+    }
+  },
+  {
+    "id": 16,
+    "name": "Cole Palmer",
+    "aliases": [
+      "palmer",
+      "cole palmer"
+    ],
+    "hints": {
+      "nationality": "England",
+      "position": "Attacking Midfielder / Winger",
+      "club": "Chelsea (Premier League)",
+      "age": 24,
+      "career": "Manchester City -> Chelsea",
+      "trophies": "UEFA Champions League (2022-23), Premier League Young Player of the Season (2023-24)"
+    }
+  },
+  {
+    "id": 17,
+    "name": "Phil Foden",
+    "aliases": [
+      "foden",
+      "phil foden"
+    ],
+    "hints": {
+      "nationality": "England",
+      "position": "Winger / Attacking Midfielder",
+      "club": "Manchester City (Premier League)",
+      "age": 26,
+      "career": "Manchester City",
+      "trophies": "6x Premier League champion, UEFA Champions League (2022-23 Treble), FWA Footballer of the Year (2023-24)"
+    }
+  },
+  {
+    "id": 18,
+    "name": "Virgil van Dijk",
+    "aliases": [
+      "van dijk",
+      "virgil van dijk",
+      "virgil"
+    ],
+    "hints": {
+      "nationality": "Netherlands",
+      "position": "Center Back",
+      "club": "Liverpool (Premier League)",
+      "age": 35,
+      "career": "Groningen -> Celtic -> Southampton -> Liverpool",
+      "trophies": "UEFA Champions League (2018-19), Premier League champion, UEFA Men's Player of the Year (2019)"
+    }
+  },
+  {
+    "id": 19,
+    "name": "Son Heung-min",
+    "aliases": [
+      "son",
+      "son heung min",
+      "heung min son"
+    ],
+    "hints": {
+      "nationality": "South Korea",
+      "position": "Forward / Winger",
+      "club": "Tottenham Hotspur (Premier League)",
+      "age": 34,
+      "career": "Hamburger SV -> Bayer Leverkusen -> Tottenham Hotspur",
+      "trophies": "Premier League Golden Boot (2021-22), FIFA Puskás Award (2020), Asian Games Gold Medal"
+    }
+  },
+  {
+    "id": 20,
+    "name": "Antoine Griezmann",
+    "aliases": [
+      "griezmann",
+      "antoine griezmann"
+    ],
+    "hints": {
+      "nationality": "France",
+      "position": "Forward / Attacking Midfielder",
+      "club": "Atlético Madrid (La Liga)",
+      "age": 35,
+      "career": "Real Sociedad -> Atlético Madrid -> Barcelona -> Atlético Madrid",
+      "trophies": "2018 FIFA World Cup, UEFA Europa League (2017-18), UEFA Nations League"
+    }
+  },
+  {
+    "id": 21,
+    "name": "Bernardo Silva",
+    "aliases": [
+      "bernardo silva",
+      "bernardo"
+    ],
+    "hints": {
+      "nationality": "Portugal",
+      "position": "Midfielder / Winger",
+      "club": "Manchester City (Premier League)",
+      "age": 32,
+      "career": "Benfica -> Monaco -> Manchester City",
+      "trophies": "6x Premier League champion, UEFA Champions League (2022-23 Treble), UEFA Nations League"
+    }
+  },
+  {
+    "id": 22,
+    "name": "Bruno Fernandes",
+    "aliases": [
+      "bruno fernandes",
+      "bruno"
+    ],
+    "hints": {
+      "nationality": "Portugal",
+      "position": "Attacking Midfielder",
+      "club": "Manchester United (Premier League)",
+      "age": 32,
+      "career": "Novara -> Udinese -> Sampdoria -> Sporting CP -> Manchester United",
+      "trophies": "FA Cup, EFL Cup, UEFA Nations League (2019), 3x Sir Matt Busby Player of the Year"
+    }
+  },
+  {
+    "id": 23,
+    "name": "Federico Valverde",
+    "aliases": [
+      "valverde",
+      "federico valverde",
+      "fede valverde"
+    ],
+    "hints": {
+      "nationality": "Uruguay",
+      "position": "Central Midfielder",
+      "club": "Real Madrid (La Liga)",
+      "age": 28,
+      "career": "Peñarol -> Deportivo La Coruña -> Real Madrid",
+      "trophies": "2x UEFA Champions League, 3x La Liga champion, FIFA Club World Cup Silver Ball"
+    }
+  },
+  {
+    "id": 24,
+    "name": "Martin Ødegaard",
+    "aliases": [
+      "odegaard",
+      "martin odegaard"
+    ],
+    "hints": {
+      "nationality": "Norway",
+      "position": "Attacking Midfielder",
+      "club": "Arsenal (Premier League)",
+      "age": 27,
+      "career": "Strømsgodset -> Real Madrid -> Heerenveen -> Vitesse -> Real Sociedad -> Arsenal",
+      "trophies": "Copa del Rey (with Real Sociedad), 2x Arsenal Player of the Season"
+    }
+  },
+  {
+    "id": 25,
+    "name": "Lautaro Martínez",
+    "aliases": [
+      "lautaro martinez",
+      "lautaro"
+    ],
+    "hints": {
+      "nationality": "Argentina",
+      "position": "Striker",
+      "club": "Inter Milan (Serie A)",
+      "age": 29,
+      "career": "Racing Club -> Inter Milan",
+      "trophies": "2022 FIFA World Cup, 2x Copa América, 2x Serie A champion, Capocannoniere"
+    }
+  },
+  {
+    "id": 26,
+    "name": "Florian Wirtz",
+    "aliases": [
+      "wirtz",
+      "florian wirtz"
+    ],
+    "hints": {
+      "nationality": "Germany",
+      "position": "Attacking Midfielder / Winger",
+      "club": "Bayer Leverkusen (Bundesliga)",
+      "age": 23,
+      "career": "1. FC Köln -> Bayer Leverkusen",
+      "trophies": "Invincible Bundesliga champion (2023-24), DFB-Pokal, Bundesliga Player of the Season"
+    }
+  },
+  {
+    "id": 27,
+    "name": "Jamal Musiala",
+    "aliases": [
+      "musiala",
+      "jamal musiala"
+    ],
+    "hints": {
+      "nationality": "Germany",
+      "position": "Attacking Midfielder / Winger",
+      "club": "Bayern Munich (Bundesliga)",
+      "age": 23,
+      "career": "Chelsea -> Bayern Munich",
+      "trophies": "4x Bundesliga champion, UEFA Champions League (2019-20), UEFA Euro 2024 Golden Boot (joint)"
+    }
+  },
+  {
+    "id": 28,
+    "name": "Declan Rice",
+    "aliases": [
+      "rice",
+      "declan rice"
+    ],
+    "hints": {
+      "nationality": "England",
+      "position": "Defensive Midfielder",
+      "club": "Arsenal (Premier League)",
+      "age": 27,
+      "career": "West Ham United -> Arsenal",
+      "trophies": "UEFA Europa Conference League captain (2022-23), West Ham Player of the Year"
+    }
+  },
+  {
+    "id": 29,
+    "name": "Thibaut Courtois",
+    "aliases": [
+      "courtois",
+      "thibaut courtois"
+    ],
+    "hints": {
+      "nationality": "Belgium",
+      "position": "Goalkeeper",
+      "club": "Real Madrid (La Liga)",
+      "age": 34,
+      "career": "Genk -> Chelsea -> Atlético Madrid -> Real Madrid",
+      "trophies": "2x UEFA Champions League, 3x La Liga, 2x Premier League, Yashin Trophy (2022)"
+    }
+  },
+  {
+    "id": 30,
+    "name": "Alisson Becker",
+    "aliases": [
+      "alisson",
+      "alisson becker"
+    ],
+    "hints": {
+      "nationality": "Brazil",
+      "position": "Goalkeeper",
+      "club": "Liverpool (Premier League)",
+      "age": 34,
+      "career": "Internacional -> Roma -> Liverpool",
+      "trophies": "UEFA Champions League (2018-19), Premier League champion, Copa América (2019), Yashin Trophy (2019)"
+    }
+  },
+  {
+    "id": 31,
+    "name": "William Saliba",
+    "aliases": [
+      "saliba",
+      "william saliba"
+    ],
+    "hints": {
+      "nationality": "France",
+      "position": "Center Back",
+      "club": "Arsenal (Premier League)",
+      "age": 25,
+      "career": "Saint-Étienne -> Arsenal -> Nice -> Marseille -> Arsenal",
+      "trophies": "Ligue 1 Young Player of the Year, 2x PFA Premier League Team of the Year"
+    }
+  },
+  {
+    "id": 32,
+    "name": "Rúben Dias",
+    "aliases": [
+      "ruben dias",
+      "dias"
+    ],
+    "hints": {
+      "nationality": "Portugal",
+      "position": "Center Back",
+      "club": "Manchester City (Premier League)",
+      "age": 29,
+      "career": "Benfica -> Manchester City",
+      "trophies": "Continental Treble (2022-23), 4x Premier League champion, FWA Footballer of the Year (2020-21)"
+    }
+  },
+  {
+    "id": 33,
+    "name": "Antonio Rüdiger",
+    "aliases": [
+      "rudiger",
+      "antonio rudiger"
+    ],
+    "hints": {
+      "nationality": "Germany",
+      "position": "Center Back",
+      "club": "Real Madrid (La Liga)",
+      "age": 33,
+      "career": "VfB Stuttgart -> Roma -> Chelsea -> Real Madrid",
+      "trophies": "2x UEFA Champions League (Chelsea & Real Madrid), UEFA Europa League, La Liga champion"
+    }
+  },
+  {
+    "id": 34,
+    "name": "Theo Hernández",
+    "aliases": [
+      "theo hernandez",
+      "theo"
+    ],
+    "hints": {
+      "nationality": "France",
+      "position": "Left Back",
+      "club": "AC Milan (Serie A)",
+      "age": 29,
+      "career": "Atlético Madrid -> Real Madrid -> Real Sociedad -> AC Milan",
+      "trophies": "Serie A champion (2021-22), UEFA Champions League (2017-18 with Real Madrid), UEFA Nations League"
+    }
+  },
+  {
+    "id": 35,
+    "name": "Achraf Hakimi",
+    "aliases": [
+      "hakimi",
+      "achraf hakimi"
+    ],
+    "hints": {
+      "nationality": "Morocco",
+      "position": "Right Back",
+      "club": "Paris Saint-Germain (Ligue 1)",
+      "age": 27,
+      "career": "Real Madrid -> Borussia Dortmund -> Inter Milan -> Paris Saint-Germain",
+      "trophies": "3x Ligue 1 champion, Serie A champion, UEFA Champions League (2017-18 with Real Madrid), 2022 World Cup 4th place"
+    }
+  },
+  {
+    "id": 36,
+    "name": "Trent Alexander-Arnold",
+    "aliases": [
+      "alexander-arnold",
+      "trent",
+      "trent alexander arnold"
+    ],
+    "hints": {
+      "nationality": "England",
+      "position": "Right Back",
+      "club": "Liverpool (Premier League)",
+      "age": 27,
+      "career": "Liverpool",
+      "trophies": "UEFA Champions League (2018-19), Premier League champion, FA Cup, FIFA Club World Cup"
+    }
+  },
+  {
+    "id": 37,
+    "name": "Pedri",
+    "aliases": [
+      "pedri"
+    ],
+    "hints": {
+      "nationality": "Spain",
+      "position": "Central Midfielder",
+      "club": "Barcelona (La Liga)",
+      "age": 23,
+      "career": "Las Palmas -> Barcelona",
+      "trophies": "UEFA Euro 2024 champion, La Liga champion (2022-23), Golden Boy (2021), Kopa Trophy"
+    }
+  },
+  {
+    "id": 38,
+    "name": "Gavi",
+    "aliases": [
+      "gavi"
+    ],
+    "hints": {
+      "nationality": "Spain",
+      "position": "Central Midfielder",
+      "club": "Barcelona (La Liga)",
+      "age": 22,
+      "career": "Barcelona",
+      "trophies": "La Liga champion (2022-23), Supercopa de España, Golden Boy (2022), Kopa Trophy"
+    }
+  },
+  {
+    "id": 39,
+    "name": "Aurélien Tchouaméni",
+    "aliases": [
+      "tchouameni",
+      "aurelien tchouameni"
+    ],
+    "hints": {
+      "nationality": "France",
+      "position": "Defensive Midfielder",
+      "club": "Real Madrid (La Liga)",
+      "age": 26,
+      "career": "Bordeaux -> Monaco -> Real Madrid",
+      "trophies": "UEFA Champions League (2023-24), La Liga champion, UEFA Nations League (2021)"
+    }
+  },
+  {
+    "id": 40,
+    "name": "Eduardo Camavinga",
+    "aliases": [
+      "camavinga",
+      "eduardo camavinga"
+    ],
+    "hints": {
+      "nationality": "France",
+      "position": "Midfielder / Left Back",
+      "club": "Real Madrid (La Liga)",
+      "age": 23,
+      "career": "Rennes -> Real Madrid",
+      "trophies": "2x UEFA Champions League, 2x La Liga champion, Copa del Rey, Coupe de France"
+    }
+  },
+  {
+    "id": 41,
+    "name": "Joshua Kimmich",
+    "aliases": [
+      "kimmich",
+      "joshua kimmich"
+    ],
+    "hints": {
+      "nationality": "Germany",
+      "position": "Midfielder / Right Back",
+      "club": "Bayern Munich (Bundesliga)",
+      "age": 31,
+      "career": "RB Leipzig -> Bayern Munich",
+      "trophies": "UEFA Champions League (2019-20 Sextuple), 8x Bundesliga champion, FIFA Confederations Cup"
+    }
+  },
+  {
+    "id": 42,
+    "name": "Rafael Leão",
+    "aliases": [
+      "leao",
+      "rafael leao"
+    ],
+    "hints": {
+      "nationality": "Portugal",
+      "position": "Winger",
+      "club": "AC Milan (Serie A)",
+      "age": 27,
+      "career": "Sporting CP -> Lille -> AC Milan",
+      "trophies": "Serie A champion (2021-22), Serie A Footballer of the Year (2021-22)"
+    }
+  },
+  {
+    "id": 43,
+    "name": "Rodrygo",
+    "aliases": [
+      "rodrygo",
+      "rodrygo goes"
+    ],
+    "hints": {
+      "nationality": "Brazil",
+      "position": "Forward / Winger",
+      "club": "Real Madrid (La Liga)",
+      "age": 25,
+      "career": "Santos -> Real Madrid",
+      "trophies": "2x UEFA Champions League, 3x La Liga champion, Copa del Rey"
+    }
+  },
+  {
+    "id": 44,
+    "name": "Khvicha Kvaratskhelia",
+    "aliases": [
+      "kvaratskhelia",
+      "kvara"
+    ],
+    "hints": {
+      "nationality": "Georgia",
+      "position": "Winger",
+      "club": "Napoli (Serie A)",
+      "age": 25,
+      "career": "Dinamo Tbilisi -> Rubin Kazan -> Dinamo Batumi -> Napoli",
+      "trophies": "Serie A champion (2022-23), Serie A Most Valuable Player (2022-23)"
+    }
+  },
+  {
+    "id": 45,
+    "name": "Alexander Isak",
+    "aliases": [
+      "isak",
+      "alexander isak"
+    ],
+    "hints": {
+      "nationality": "Sweden",
+      "position": "Striker",
+      "club": "Newcastle United (Premier League)",
+      "age": 27,
+      "career": "AIK -> Borussia Dortmund -> Willem II -> Real Sociedad -> Newcastle United",
+      "trophies": "Copa del Rey (2019-20), DFB-Pokal (2016-17)"
+    }
+  },
+  {
+    "id": 46,
+    "name": "Ollie Watkins",
+    "aliases": [
+      "watkins",
+      "ollie watkins"
+    ],
+    "hints": {
+      "nationality": "England",
+      "position": "Striker",
+      "club": "Aston Villa (Premier League)",
+      "age": 30,
+      "career": "Exeter City -> Weston-super-Mare -> Brentford -> Aston Villa",
+      "trophies": "Premier League Playmaker of the Season (2023-24), UEFA Euro 2024 semifinal match-winning goal"
+    }
+  },
+  {
+    "id": 47,
+    "name": "Alphonso Davies",
+    "aliases": [
+      "davies",
+      "alphonso davies"
+    ],
+    "hints": {
+      "nationality": "Canada",
+      "position": "Left Back",
+      "club": "Bayern Munich (Bundesliga)",
+      "age": 25,
+      "career": "Vancouver Whitecaps -> Bayern Munich",
+      "trophies": "UEFA Champions League (2019-20 Sextuple), 5x Bundesliga champion, CONCACAF Player of the Year"
+    }
+  },
+  {
+    "id": 48,
+    "name": "Jan Oblak",
+    "aliases": [
+      "oblak",
+      "jan oblak"
+    ],
+    "hints": {
+      "nationality": "Slovenia",
+      "position": "Goalkeeper",
+      "club": "Atlético Madrid (La Liga)",
+      "age": 33,
+      "career": "Olimpija Ljubljana -> Benfica -> Atlético Madrid",
+      "trophies": "La Liga champion (2020-21), UEFA Europa League, 5x Ricardo Zamora Trophy winner"
+    }
+  },
+  {
+    "id": 49,
+    "name": "Julián Álvarez",
+    "aliases": [
+      "alvarez",
+      "julian alvarez"
+    ],
+    "hints": {
+      "nationality": "Argentina",
+      "position": "Forward / Striker",
+      "club": "Atlético Madrid (La Liga)",
+      "age": 26,
+      "career": "River Plate -> Manchester City -> Atlético Madrid",
+      "trophies": "2022 FIFA World Cup, Continental Treble (2022-23), 2x Copa América, Copa Libertadores"
+    }
+  },
+  {
+    "id": 50,
+    "name": "İlkay Gündoğan",
+    "aliases": [
+      "gundogan",
+      "ilkay gundogan"
+    ],
+    "hints": {
+      "nationality": "Germany",
+      "position": "Central Midfielder",
+      "club": "Manchester City (Premier League)",
+      "age": 35,
+      "career": "VfL Bochum -> 1. FC Nürnberg -> Borussia Dortmund -> Manchester City -> Barcelona -> Manchester City",
+      "trophies": "Continental Treble captain (2022-23), 5x Premier League champion, Bundesliga champion"
+    }
+  }
+]

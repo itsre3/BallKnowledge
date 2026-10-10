@@ -1,0 +1,176 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <div class="container text-center mt-4">
+        <div class="mb-3" id="lobby">
+            <h1 class="">Lobby</h1>
+            <div class="d-grid gap-2 mx-auto" style="max-width: 280px;" id="lobbyBtns">
+                {% if session.get("user_id") %}
+                    <button class="btn btn-primary w-100 mb-2" onclick="sendMatchmake()">Match ranked</button>
+                {% endif %}
+                <button class="btn btn-primary w-100 mb-2" onclick="createRoom()">Create</button>
+                <button class="btn btn-primary w-100 mb-2" onclick="joinRoom()">Join</button>
+            </div>
+            <div class="input-group mb-3" id="joinroom" style="display: none">
+                <input type="text" class="form-control" id="joinroomcode" placeholder="Enter Room Code" aria-label="room-code" aria-describedby="code">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" onclick="joinRoomCode()">Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3" id="game" style="display: none;">
+            <h2 class="text-center">Game Area</h2>
+            <div class="mb-3" id="gamebox" style="display: none;">
+                <select id="playerSelect" class="form-select mb-2" style="display: none;">
+                    <option value="" disabled selected>-- Select a Footballer --</option>
+                </select>
+                <input class="form-control" id="textbox" type="text" style="display: none;">
+                <div class="mb-3" id="submitsecret">
+                    <button class="btn btn-primary" onclick="submitText()">Lock In</button>
+                </div>
+                <div class="mb-3" id="sendguess" style="display: none;">
+                    <button class="btn btn-primary" onclick="submitGuess()">Guess</button>
+                </div>
+            </div>
+            <p id="streams"></p>
+            <ul class="text-start d-inline-block" id="hints"></ul>
+        </div>
+        <p class="text-center" id="messages"></p>
+    </div>
+
+    <script>
+        const socket = io("/play");
+
+        const lobby = document.querySelector("#lobby");
+        const gameArea = document.querySelector("#game");
+        const streams = document.querySelector("#streams");
+        const gameBox = document.querySelector("#gamebox");
+        const playerSelect = document.querySelector("#playerSelect");
+        const textBox = document.querySelector("#textbox");
+        const wordBtn = document.querySelector("#submitsecret");
+        const guessBtn = document.querySelector("#sendguess");
+        const hintList = document.querySelector("#hints");
+        const lobbyBtns = document.querySelector("#lobbyBtns");
+        const joinroomForm = document.querySelector("#joinroom");
+        const roomcodeText = document.querySelector("#joinroomcode");
+
+        let currentRoom = null;
+        let choices = [];
+
+        socket.on("match_found", function(data) {
+            lobby.style.display = "none";
+            gameArea.style.display = "block";
+            streams.innerHTML = `Match found <br>Code: ${data.code} <br> Players: ${data.players.player1} || ${data.players.player2}`;
+            currentRoom = data["code"];
+        });
+
+        socket.on("waiting", function(data) {
+            lobby.style.display = "none";
+            gameArea.style.display = "block";
+            streams.innerHTML = `${data.message} <br> Code ${data.code}`;
+            currentRoom = data["code"];
+        });
+
+        socket.on("lock_choice", function(data) {
+            gameBox.style.display = "block";
+            wordBtn.style.display = "block";
+            guessBtn.style.display = "none";
+            textBox.style.display = "none";
+            streams.innerHTML = "Select your footballer from the options:";
+            choices = data["choice"];
+            playerSelect.innerHTML = '<option value="" disabled selected>-- Select a Footballer --</option>';
+            choices.forEach(function(choice) {
+                const opt = document.createElement("option");
+                opt.value = choice;
+                opt.textContent = choice;
+                playerSelect.appendChild(opt);
+            });
+            playerSelect.style.display = "block";
+        });
+
+        socket.on("startmatch", function(data) {
+            gameBox.style.display = "block";
+            playerSelect.style.display = "none";
+            wordBtn.style.display = "none";
+            textBox.style.display = "block";
+            textBox.placeholder = "Enter Guess";
+            textBox.value = "";
+            guessBtn.style.display = "block";
+            streams.innerHTML = "Game started! Take your guess. Hints below";
+        });
+
+        socket.on("error", function(data) {
+            alert(data["message"]);
+        })
+
+        socket.on("disconnect", function(data) {
+            gameArea.style.display = "none";
+            lobby.style.display = "block";
+            gameBox.style.display = "none";
+            playerSelect.style.display = "none";
+            hintList.innerHTML = "";
+            document.querySelector("#messages").innerHTML = `Opponent ${data.player} left`;
+        });
+
+        socket.on("wrongguess", function(data) {
+            // https://javascript.plainenglish.io/how-to-add-a-new-li-element-into-a-ul-on-click-of-an-element-with-javascript-d64c7143d9b8
+            const li = document.createElement("li");
+            li.appendChild(document.createTextNode(data["hint"]));
+            hintList.appendChild(li);
+        });
+
+        socket.on("disableBox", function(data) {
+            hintList.innerHTML = ``;
+            streams.innerHTML = `<img href="https://share.google/ue5AFzZDNh4L7XUTl">`;
+            gameBox.style.display = "none";
+            document.querySelector("#messages").innerHTML = `${data.message}!`;
+
+        });
+
+        socket.on("game_over", function(data) {
+            alert(data.message);
+            socket.disconnect();
+            window.location.reload();
+        })
+
+        function sendMatchmake() {
+            socket.emit("matchmaking");
+            document.querySelector("#messages").innerHTML = "";
+        }
+
+        function createRoom() {
+            socket.emit("createroom");
+            document.querySelector("#messages").innerHTML = "";
+        }
+
+        function joinRoom() {
+            lobbyBtns.classList.add("d-none");
+            joinroomForm.style.display = "flex";
+        }
+
+        function joinRoomCode() {
+            socket.emit("joinroom", {"code": roomcodeText.value});
+            roomcodeText.value = "";
+        }
+
+        function submitText() {
+            const chosenPlayer = playerSelect.value;
+            if (!chosenPlayer) {
+                alert("Please select a player from the dropdown!");
+                return;
+            }
+            socket.emit("saveword", {"word": chosenPlayer, "code": currentRoom});
+            streams.innerHTML = `Your word is ${chosenPlayer}. <br>Waiting for opponent...`;
+            playerSelect.value = "";
+            playerSelect.style.display = "none";
+            wordBtn.style.display = "none";
+        }
+
+        function submitGuess() {
+            let guess = textBox.value.trim();
+            if (!guess) return;
+            socket.emit("takeguess", {"word": guess, "code": currentRoom});
+            textBox.value = "";
+        }
+    </script>
+{% endblock %}
