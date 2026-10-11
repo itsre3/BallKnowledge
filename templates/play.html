@@ -34,6 +34,9 @@
             </div>
             <p id="streams"></p>
             <ul class="text-start d-inline-block" id="hints"></ul>
+            <div class="mb-3">
+                <button class="btn btn-danger justify-content-center" onclick="quitMatch()">Quit</button>
+            </div>
         </div>
         <p class="text-center" id="messages"></p>
     </div>
@@ -171,6 +174,10 @@
             if (!guess) return;
             socket.emit("takeguess", {"word": guess, "code": currentRoom});
             textBox.value = "";
+        }
+
+        function quitMatch() {
+            window.location.reload();
         }
     </script>
 {% endblock %}

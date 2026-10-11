@@ -2,6 +2,7 @@ from flask import request, session, redirect
 from flask_socketio import Namespace, emit, leave_room, join_room
 from .helpers import select_draft, generate_code, players, hints, is_correct_guess
 from .game import Player, Room
+from .decorators import in_room
 import random, sqlite3
 
 class GameNameSpace(Namespace):
@@ -23,12 +24,12 @@ class GameNameSpace(Namespace):
             if self.active_rooms[room].player1 and self.active_rooms[room].player1.sid == request.sid:
                 room_code = room
                 remaining_player = self.active_rooms[room].player2
-                leave_room(room_code, sid=remaining_player)
+                leave_room(room_code, sid=remaining_player.sid)
                 break
             elif self.active_rooms[room].player2 and self.active_rooms[room].player2.sid == request.sid:
                 room_code = room
                 remaining_player = self.active_rooms[room].player1
-                leave_room(room_code, sid=remaining_player)
+                leave_room(room_code, sid=remaining_player.sid)
                 break
         if room_code:
             if remaining_player:
@@ -49,17 +50,14 @@ class GameNameSpace(Namespace):
                 self.matching_queue.remove(room)
                 room.player2 = player
                 self.active_rooms[room.code] = room
-                room.player_turn = room.player1
-                room.phase = "insession"
+                room.phase = "in_session"
                 join_room(room.code)
                 emit("match_found", {"code": room.code, "players": {"player1": room.player1.username, "player2": room.player2.username}}, to=room.code)
                 self.socket.sleep(4)
-                player1_choice = select_draft()
-                player2_choice = select_draft()
-                room.player1.choices = player1_choice
-                room.player2.choices = player2_choice
-                emit("lock_choice",{"choice": player1_choice}, to=room.player1.sid)
-                emit("lock_choice", {"choice": player2_choice}, to=room.player2.sid)
+                room.player1.choices = select_draft()
+                room.player2.choices = select_draft()
+                emit("lock_choice",{"choice": room.player1.choices}, to=room.player1.sid)
+                emit("lock_choice", {"choice": room.player2.choices}, to=room.player2.sid)
                 return
 
         code = generate_code()
@@ -99,15 +97,14 @@ class GameNameSpace(Namespace):
             join_room(code)
             emit("match_found", {"code": room.code, "players": {"player1": room.player1.username, "player2": player.username}}, to=code)
             self.socket.sleep(4)
-            p1_draft = select_draft()
-            p2_draft = select_draft()
-            room.player1.choices = p1_draft
-            room.player2.choices = p2_draft
-            emit("lock_choice",{"choice": p1_draft}, to=room.player1.sid)
-            emit("lock_choice",{"choice": p2_draft}, to=room.player2.sid)
+            room.player1.choices = select_draft()
+            room.player2.choices = select_draft()
+            emit("lock_choice",{"choice": room.player1.choices}, to=room.player1.sid)
+            emit("lock_choice",{"choice": room.player2.choices}, to=room.player2.sid)
         else:
             emit("error", {"message": "Room Full!"}, to=request.sid)
 
+    @in_room
     def on_saveword(self, data):
         room = self.active_rooms.get(data["code"])
         if not room:
@@ -118,7 +115,7 @@ class GameNameSpace(Namespace):
             for i in room.player1.choices:
                 if data["word"] in i:
                     room.player1.word = i
-                    room.player1_hints = hints(i)
+                    room.player2.hints = hints(i)
                     if room.player2.word:
                         emit("startmatch", {"code": data["code"]}, to=data["code"])
                     return
@@ -126,7 +123,7 @@ class GameNameSpace(Namespace):
         elif room.player2 and room.player2.sid == request.sid:
             for i in room.player2.choices:
                 if data["word"] in i:
-                    room.player2_hints = hints(i)
+                    room.player1.hints = hints(i)
                     room.player2.word = i
                     if room.player1.word:
                         emit("startmatch", {"code": data["code"]}, to=data["code"])
@@ -135,44 +132,49 @@ class GameNameSpace(Namespace):
         else:
             emit("error", {"message": "Player not authorised"}, to=request.sid)
 
+    @in_room
     def on_takeguess(self, data):
         room = self.active_rooms.get(data["code"])
+        if not room:
+            emit("error", {"message": "Error, Invalid room code"}, to=request.sid)
+            return
         if request.sid == room.player1.sid:
-            if is_correct_guess(data["word"], room.player2.word):
-                if not room.player1.finished:
-                    room.player1.finished = True
-                    self.correct_guess({"player": room.player1.sid, "code": room.code})
-                return
-            else:
-                if room.player1.trials < 7:
-                    room.player1.trials += 1
-                    random.shuffle(room.player2_hints)
-                    emit("wrongguess", {"hint": room.player2_hints[0]}, to=request.sid)
-                    room.player2_hints.pop(0)
-                else:
-                    room.player1.finished = True
-                    emit("disableBox", {"message": f"Out of Tries. Player is {room.player2.word}"})
-                    self.correct_guess({"player": room.player1.sid, "code": room.code})
-
+            player = room.player1
+            player_2 = room.player2
         elif request.sid == room.player2.sid:
-            if is_correct_guess(data["word"], room.player1.word):
-                if not room.player2.finished:
-                    room.player2.finished = True
-                    self.correct_guess({"player": room.player2.sid, "code": room.code})
-                return
-            else:
-                if room.player2.trials < 7:
-                    room.player2.trials += 1
-                    random.shuffle(room.player1_hints)
-                    emit("wrongguess", {"hint": room.player1_hints[0]}, to=request.sid)
-                    room.player1_hints.pop(0)
-                else:
-                    room.player2.finished = True
-                    emit("disableBox", {"message": f"Out of tries. Player is {room.player1.word}"})
-                    self.correct_guess({"player": room.player2.sid, "code": room.code})
+            player = room.player2
+            player_2 = room.player1
+        else:
+            emit("error", {"message": "Player not authorised"}, to=request.sid)
+            return
 
+        if player.finished:
+            emit("disableBox", {"message": "You have already finished guessing."}, to=request.sid)
+            return
+        
+        if is_correct_guess(data["word"], player_2.word):
+            if not player.finished:
+                player.finished = True
+                self.correct_guess({"player": player.sid, "code": room.code})
+                return
+        else:
+            if player.trials < 7:
+                player.trials += 1
+                random.shuffle(player.hints)
+                emit("wrongguess", {"hint": player.hints[0]}, to=request.sid)
+                player.hints.pop(0)
+            else:
+                player.finished = True
+                emit("disableBox", {"message": f"Out of Tries. Player is {player_2.word}"})
+                self.correct_guess({"player": player.sid, "code": room.code})
+
+    
+                    
     def correct_guess(self, data):
         room = self.active_rooms.get(data["code"])
+        if not room:
+            emit("error", {"message": "Error, Invalid room code"}, to=request.sid)
+            return
         if request.sid == data["player"] and data["player"] == room.player1.sid:
             player = room.player1
             s_player = room.player2
@@ -180,6 +182,7 @@ class GameNameSpace(Namespace):
             player = room.player2
             s_player = room.player1
         else:
+            emit("error", {"message": "Error, Invalid player"}, to=request.sid)
             return
         if player.finished and s_player.finished:
             self.check_match_winner(room)
@@ -209,3 +212,8 @@ class GameNameSpace(Namespace):
             "p2_trials": p2.trials,
             "message": result_text
         }, to=room.code)
+
+        self.active_players.discard(p1.sid)
+        self.active_players.discard(p2.sid)
+        self.active_rooms.pop(room.code, None)
+

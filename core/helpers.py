@@ -1,6 +1,8 @@
 import random, string, json, unicodedata
 import bcrypt
 
+with open("memory/players.json", "r") as file:
+    CACHED_PLAYERS = json.load(file)
 
 def generate_code():
     # Source - https://stackoverflow.com/a/2257449
@@ -11,9 +13,7 @@ def guest_names():
     return f"Guest{digits}"
 
 def players():
-    with open("memory/players.json", "r") as file:
-        players = json.load(file)
-    return players
+    return CACHED_PLAYERS
 
 def select_draft():
     # Source: https://www.geeksforgeeks.org/python/python-random-sample-function/
@@ -25,7 +25,7 @@ def select_draft():
     return choices
 
 def hints(name):
-    for player in players():
+    for player in CACHED_PLAYERS:
         if player["name"] == name:
             hints = player["hints"]
     # https://www.geeksforgeeks.org/python/convert-dictionary-to-string-list-in-python/
@@ -33,7 +33,7 @@ def hints(name):
     return res
 
 def player_data(name):
-    for player in players():
+    for player in CACHED_PLAYERS:
         if player["name"] == name:
             return player
 

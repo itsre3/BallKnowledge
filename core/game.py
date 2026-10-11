@@ -8,6 +8,7 @@ class Player:
         self.choices = []
         self.finished: bool = False
         self.trials = 1
+        self.hints: list = []
 
 
 class Room:
@@ -16,8 +17,6 @@ class Room:
         self.type = type
         self.player1: Optional[Player] = None
         self.player2: Optional[Player] = None
-        self.player1_hints: list = []
-        self.player2_hints: list = []
         self.phase: str = "waiting"
         self.winner: Optional[Player] = None
 
